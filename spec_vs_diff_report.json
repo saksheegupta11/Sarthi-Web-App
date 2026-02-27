@@ -1,0 +1,112 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-26T11:22:30.767Z",
+  "summary": "The diff implements most of the required features for the Sarthi app. The core modules (Internet Identity auth, Dashboard, Career Quiz, Scholarships, Internships, Mock Test, AI Chatbot, Profile, visual theme) are all present. However, several specific acceptance criteria have gaps: the backend Scholarship/Internship types are missing the 'category' field; the backend lacks save/unsave functions for colleges; the chatbot lacks a sidebar listing previous chat sessions; the mock test result page doesn't show individual correct answers per question; the saved collections tab doesn't show saved colleges; and the career quiz backend stub appears truncated.",
+  "missing_requirements": [
+    {
+      "id": "REQ-4",
+      "requirement": "Backend stores scholarship and internship records with a 'category' field",
+      "reason": "The Scholarship and Internship types in backend/main.mo do not include a 'category' field — only title, description, eligibility, link, company, and duration are present.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "requirement": "Backend provides save/unsave functions for colleges per user principal, and a function to retrieve saved colleges",
+      "reason": "The backend storage only shows savedScholarships and savedInternships maps. No savedColleges map or related functions are present.",
+      "evidence": [
+        "backend/main.mo",
+        "frontend/src/hooks/useQueries.ts"
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "requirement": "A sidebar or panel lists previous chat sessions; clicking one loads that session's history",
+      "reason": "The Chatbot page shows a single chat session with a New Chat button that resets local messages, but there is no sidebar or panel listing multiple previous sessions that can be clicked to load history.",
+      "evidence": [
+        "frontend/src/pages/Chatbot.tsx"
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "requirement": "On submission or timer expiry, correct answers are displayed per question",
+      "reason": "MockTestResult page shows score, percentage, and performance rating but does not display the correct answers for each question.",
+      "evidence": [
+        "frontend/src/pages/MockTestResult.tsx"
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "requirement": "Saved Collections tab lists saved colleges with remove option",
+      "reason": "Profile page shows saved scholarships and internships but there is no colleges section in the saved collections tab.",
+      "evidence": [
+        "frontend/src/pages/Profile.tsx"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "requirement": "Career quiz backend has at least 10 MCQ questions stored",
+      "reason": "The backend/main.mo shows only 2 questions explicitly with a comment indicating 8 more exist in the full application, but only 2 are confirmed present in the diff.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "ProfileSetupModal — a modal that appears on first login to collect the user's name before accessing the dashboard",
+      "reason": "The build request does not specify a separate profile setup modal flow on first login; it only specifies that the profile section is accessible from the top-right icon.",
+      "evidence": [
+        "frontend/src/components/ProfileSetupModal.tsx",
+        "frontend/src/components/ProtectedRoute.tsx"
+      ]
+    },
+    {
+      "description": "Footer with 'Built with caffeine.ai' attribution link",
+      "reason": "The build request does not specify a footer or any caffeine.ai attribution in the app layout.",
+      "evidence": [
+        "frontend/src/components/Layout.tsx"
+      ]
+    },
+    {
+      "description": "Suggested questions panel shown in the chatbot when no messages exist",
+      "reason": "The build request does not specify pre-defined suggested questions in the chatbot UI.",
+      "evidence": [
+        "frontend/src/pages/Chatbot.tsx"
+      ]
+    }
+  ],
+  "confidence": 0.72,
+  "changed_files": [
+    "all_files_summary.json",
+    "backend/main.mo",
+    "frontend-file-summaries.txt",
+    "frontend/index.css",
+    "frontend/index.html",
+    "frontend/src/App.tsx",
+    "frontend/src/components/Layout.tsx",
+    "frontend/src/components/ProfileSetupModal.tsx",
+    "frontend/src/components/ProtectedRoute.tsx",
+    "frontend/src/components/TopNav.tsx",
+    "frontend/src/hooks/useActor.ts",
+    "frontend/src/hooks/useInternetIdentity.ts",
+    "frontend/src/hooks/useQueries.ts",
+    "frontend/src/index.css",
+    "frontend/src/main.tsx",
+    "frontend/src/pages/CareerQuiz.tsx",
+    "frontend/src/pages/CareerQuizResult.tsx",
+    "frontend/src/pages/Chatbot.tsx",
+    "frontend/src/pages/Dashboard.tsx",
+    "frontend/src/pages/Internships.tsx",
+    "frontend/src/pages/LandingPage.tsx",
+    "frontend/src/pages/MockTest.tsx",
+    "frontend/src/pages/MockTestResult.tsx",
+    "frontend/src/pages/Profile.tsx",
+    "frontend/src/pages/Scholarships.tsx",
+    "frontend/src/utils/urlParams.ts",
+    "frontend/tailwind.config.js",
+    "project_state.json"
+  ]
+}

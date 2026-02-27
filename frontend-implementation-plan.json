@@ -1,0 +1,221 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Sarthi – AI-Based Educational & Career Guidance Web App (Frontend Implementation)",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Implement Internet Identity authentication flow with login/logout and session management",
+      "acceptanceCriteria": [
+        "Unauthenticated users see only the login/landing page",
+        "Clicking 'Login with Internet Identity' opens the II flow",
+        "After successful authentication, user is redirected to the Dashboard",
+        "Logout clears the session and returns user to the landing page"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/LandingPage.tsx",
+          "operation": "create",
+          "description": "Create landing page with Internet Identity login button, Sarthi branding, and hero section. Display the generated hero image frontend/public/assets/generated/dashboard-hero.dim_1200x400.png and logo frontend/public/assets/generated/sarthi-logo.dim_256x256.png. Use the authorization component's useInternetIdentity hook for authentication. On successful login, redirect to /dashboard. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Configure routes for the authenticated application. Add routes for: / (LandingPage for unauthenticated users), /dashboard (Dashboard), /profile (Profile), /career-quiz (CareerQuiz), /scholarships (Scholarships), /internships (Internships), /mock-test (MockTest), /chatbot (Chatbot). Implement route guards using the authorization component's useInternetIdentity hook to redirect unauthenticated users to /. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/ProfileSetupModal.tsx",
+          "operation": "create",
+          "description": "Create modal component to prompt new users for their name on first login. Use the authorization component's getCallerUserProfile and saveCallerUserProfile backend capabilities. Show modal only when isAuthenticated && !profileLoading && isFetched && userProfile === null to prevent flash. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/ProtectedRoute.tsx",
+          "operation": "create",
+          "description": "Create a wrapper component for protected routes. Use the authorization component's useInternetIdentity hook to check authentication status. If not authenticated, redirect to /. If authenticated but no profile exists, show ProfileSetupModal. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Build Dashboard as the central home screen with navigation to all app features",
+      "acceptanceCriteria": [
+        "Dashboard displays five feature cards: Career Quiz, Scholarships, Internships, Mock Test, AI Chatbot",
+        "Each card navigates to the corresponding module",
+        "Profile icon in top-right corner opens the Profile section",
+        "User's display name shown on the dashboard"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/Dashboard.tsx",
+          "operation": "create",
+          "description": "Create Dashboard page displaying welcome message with user's name from the authorization component's user profile. Show five feature cards for Career Quiz (/career-quiz), Scholarships (/scholarships), Internships (/internships), Mock Test (/mock-test), and AI Chatbot (/chatbot). Each card includes an icon, title, description, and click navigation. Use the hero image frontend/public/assets/generated/dashboard-hero.dim_1200x400.png as a banner. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/TopNav.tsx",
+          "operation": "create",
+          "description": "Create top navigation bar component. Display Sarthi logo frontend/public/assets/generated/sarthi-logo.dim_256x256.png on the left, linking to /dashboard. On the right, display a profile icon that navigates to /profile. Use the authorization component's user profile to show the user's initial in the profile icon. Apply teal and amber theme colors."
+        },
+        {
+          "path": "frontend/src/components/Layout.tsx",
+          "operation": "create",
+          "description": "Create layout wrapper component that includes TopNav at the top and renders children below. Wrap all authenticated pages (Dashboard, Profile, etc.) with this Layout in App.tsx routing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Implement Career Quiz module with MCQ questions and result display",
+      "acceptanceCriteria": [
+        "Quiz presents at least 10 MCQ questions sequentially",
+        "Student can navigate between questions and change answers before submitting",
+        "On submission, backend returns a recommended stream, list of subjects, and future scope text",
+        "Result page clearly displays stream, subjects, and future scope",
+        "Result is saved to the user's profile/collection in the backend"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/CareerQuiz.tsx",
+          "operation": "create",
+          "description": "Create Career Quiz page that fetches questions using backend capability getCareerQuizQuestions. Display questions sequentially with radio button options, previous/next navigation, and a submit button. Track selected answers in state. On submit, call backend capability submitCareerQuiz with answers array and navigate to /career-quiz/result. Display the illustration frontend/public/assets/generated/quiz-illustration.dim_600x400.png at the top of the quiz."
+        },
+        {
+          "path": "frontend/src/pages/CareerQuizResult.tsx",
+          "operation": "create",
+          "description": "Create result page that displays the career quiz result from backend capability getCareerQuizResult. Show recommended stream as a bold heading, suggested subjects as a list, and future scope as descriptive text. Include a button to return to /dashboard. Style with teal and amber theme colors."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Implement Scholarship section with list, save functionality, and external links",
+      "acceptanceCriteria": [
+        "Scholarship list displays at least 10 pre-seeded entries",
+        "Each card shows name, type (government/private), eligibility, and Apply Now link",
+        "Apply Now opens the external URL in a new tab",
+        "Save/bookmark icon on each card saves the scholarship to the user's collection",
+        "Saved state is visually indicated (filled bookmark icon)"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/Scholarships.tsx",
+          "operation": "create",
+          "description": "Create Scholarships page that fetches scholarships using backend capability getAllScholarships and saved scholarships using getSavedScholarships. Display each scholarship as a card with title, eligibility, and an 'Apply Now' button opening the external link in a new tab (target='_blank' rel='noopener noreferrer'). Include a bookmark icon that calls backend capability saveScholarship to save/unsave. Show filled icon if saved. Display the illustration frontend/public/assets/generated/scholarship-illustration.dim_600x400.png as a header image."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Implement Internship section with domain filtering, save functionality, and external links",
+      "acceptanceCriteria": [
+        "Internship list is filterable by category: Engineering, Medical, Commerce, Arts",
+        "Each card shows title, organization, category, description, and View Details link",
+        "View Details opens the external URL in a new tab",
+        "Save/bookmark icon saves the internship to the user's collection",
+        "At least 8 pre-seeded internship entries across categories"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/Internships.tsx",
+          "operation": "create",
+          "description": "Create Internships page that fetches internships using backend capability getAllInternships and saved internships using getSavedInternships. Display filter buttons for Engineering, Medical, Commerce, Arts categories. Show each internship as a card with title, company, category, description, and 'View Details' button opening the external link in a new tab (target='_blank' rel='noopener noreferrer'). Include a bookmark icon that calls backend capability saveInternship to save/unsave. Display the illustration frontend/public/assets/generated/internship-illustration.dim_600x400.png as a header image."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Implement Mock Test module with subject selection, timed quiz, and result display",
+      "acceptanceCriteria": [
+        "Student can choose from at least 4 subjects before starting the test",
+        "Each test has at least 10 MCQ questions with a countdown timer",
+        "On submission or timer expiry, score and correct answers are displayed",
+        "Performance summary (e.g., Excellent / Good / Needs Improvement) is shown based on score percentage",
+        "Test results are stored per user in the backend"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/MockTest.tsx",
+          "operation": "create",
+          "description": "Create Mock Test page with subject selection (Mathematics, Science, English, General Knowledge, Reasoning). On subject selection, fetch test questions using backend capability getMockTest(subject). Display questions with radio button options, a countdown timer, and previous/next navigation. On submit or timer expiry, call backend capability submitMockTest(subject, answers) and navigate to /mock-test/result."
+        },
+        {
+          "path": "frontend/src/pages/MockTestResult.tsx",
+          "operation": "create",
+          "description": "Create result page displaying score, performance rating (Excellent/Good/Needs Improvement), and a list of correct answers from the MockTestResult. Include a button to return to /mock-test to take another test. Style with teal and amber theme."
+        }
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "summary": "Implement AI Chatbot section with persistent chat history and Hugging Face integration",
+      "acceptanceCriteria": [
+        "Chat UI with an input field and scrollable message thread",
+        "Messages are sent to Hugging Face Inference API and the response is displayed in the chat",
+        "Chat messages (user + bot) are persisted in the backend per user principal",
+        "A sidebar or panel lists previous chat sessions; clicking one loads that session's history",
+        "Student can start a new chat session",
+        "Loading indicator shown while awaiting AI response"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/Chatbot.tsx",
+          "operation": "create",
+          "description": "Create Chatbot page with a chat UI. Fetch chat history using backend capability getChatHistory. Display messages in a scrollable thread with user messages aligned right and bot messages aligned left. Show the chatbot avatar frontend/public/assets/generated/chatbot-avatar.dim_128x128.png for bot messages. Include an input field and send button. On send, call backend capability sendMessageToChatbot(message) which internally calls Hugging Face Inference API and returns the bot response. Show a loading spinner while waiting. Display a sidebar listing previous chat sessions (grouped by date or session). Include a 'New Chat' button to start a fresh session."
+        }
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "summary": "Implement Profile section with edit form, saved collections, preferences, and logout",
+      "acceptanceCriteria": [
+        "Profile page shows user avatar (initial-based) and display name",
+        "Edit profile form allows updating: name, DOB, institution name, class/year",
+        "Email and phone number fields are absent from the edit form",
+        "Saved Collections tab lists saved scholarships, internships, and colleges with remove option",
+        "Language selector includes at least English and Hindi",
+        "Appearance toggle switches between light and dark mode and persists the preference",
+        "Logout button ends the Internet Identity session and redirects to the landing page",
+        "Profile data is stored in the backend per user principal"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/Profile.tsx",
+          "operation": "create",
+          "description": "Create Profile page using the authorization component's getCallerUserProfile and saveCallerUserProfile backend capabilities. Display user avatar with initial and display name at the top. Include an edit profile form with fields: name (text), dateOfBirth (date), school (text), classYear (text). Exclude email and phone fields per constraint. Add a Saved Collections tab that fetches saved scholarships using getSavedScholarships and saved internships using getSavedInternships, displaying them in lists with remove buttons. Include a language selector dropdown (English, Hindi). Add an appearance toggle (light/dark mode) that persists preference in the profile. Include a logout button that calls the authorization component's clear() and redirects to /. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "summary": "Apply cohesive visual theme with deep teal and saffron/amber palette across the app",
+      "acceptanceCriteria": [
+        "Consistent color palette (deep teal + saffron/amber) applied across all screens",
+        "Responsive layout works on mobile (≥375px) and desktop (≥1024px)",
+        "Card components, buttons, and navigation follow the same visual language",
+        "Dark mode variant maintains the same palette with appropriate contrast",
+        "Typography is legible and consistent across all sections"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Define CSS custom properties for the teal and amber color palette in :root and [data-theme='dark']. Set primary colors (deep teal), accent colors (saffron/amber), neutral grays, and semantic colors (success, error, warning). Ensure sufficient contrast for WCAG compliance in both light and dark modes. Add smooth transition properties for theme switching."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Extend Tailwind theme with custom colors matching the teal and amber palette. Define primary, secondary, accent, and semantic color scales. Configure responsive breakpoints for mobile (375px) and desktop (1024px). Add custom spacing, border-radius, and shadow utilities to match the warm academic aesthetic."
+        },
+        {
+          "path": "frontend/src/components/Card.tsx",
+          "operation": "create",
+          "description": "Create a reusable Card component with teal border accent, subtle shadow, hover effect, and rounded corners. Support variants for primary (teal background), secondary (amber accent), and neutral. Use Tailwind classes referencing the custom theme colors."
+        },
+        {
+          "path": "frontend/src/components/Button.tsx",
+          "operation": "create",
+          "description": "Create a reusable Button component with variants: primary (deep teal), secondary (amber), and outline. Include hover states with smooth transitions, loading state, and disabled styling. Use Tailwind classes referencing the custom theme colors."
+        }
+      ]
+    }
+  ]
+}

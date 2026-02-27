@@ -1,0 +1,152 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "Sarthi – AI-based Educational & Career Guidance Web App (web version of mobile app concept). Built with React + TypeScript frontend and Internet Computer backend. Features: career quiz with stream/subject/future scope recommendations, scholarship section with official portal links, internship section categorized by domain, mock test module with scoring, AI chatbot (Hugging Face API) with chat history, profile management with saved collections and preferences, and Internet Identity authentication.",
+  "architectural_notes": [
+    "Frontend: React + TypeScript (web, not React Native)",
+    "Backend: Internet Computer (Motoko), not Node.js/Express/MongoDB",
+    "Authentication: Internet Identity (not JWT/OTP email)",
+    "AI Chatbot: Hugging Face Inference API (free tier)",
+    "Internship listings: Adzuna Jobs API or similar free API",
+    "Quiz questions: Open Trivia DB API or custom question bank"
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "imageRequirements": "## Required Images\n- Sarthi app logo — a stylized compass or open book merged with a graduation cap in teal and amber tones on a transparent background (sarthi-logo.dim_256x256.png)\n- Dashboard hero banner — abstract illustration of a student at a crossroads with signposts representing career paths, warm amber-teal gradient background (dashboard-hero.dim_1200x400.png)\n- Career quiz section illustration — flat-style illustration of a student thinking with lightbulb and career icons floating around (quiz-illustration.dim_600x400.png)\n- Scholarship section illustration — flat-style illustration of a graduation cap with coins and a document scroll in teal and amber (scholarship-illustration.dim_600x400.png)\n- Internship section illustration — flat-style illustration of a briefcase with domain category icons in teal and amber palette (internship-illustration.dim_600x400.png)\n- Chatbot avatar icon — friendly robot face in teal and amber circular badge style (chatbot-avatar.dim_128x128.png)",
+  "existing_features": [
+    {
+      "id": "feature-implement-internet-identity-authentication-users-must-log-in-via-internet-identity-before-accessing-any-app-feature-after-login-the-authenticated-principal-is-used-to-associate-all-user-data-profile-quiz-results-saved-items-chat-history",
+      "title": "Implement Internet Identity authentication. Users must log in via Internet Identity before accessing any app feature. After login, the authenticated principal is used to associate all user data (profile, quiz results, saved items, chat history).",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-a-dashboard-as-the-central-home-screen-after-login-display-a-welcome-message-with-the-user-s-name-and-navigable-cards-sections-for-career-quiz-scholarships-internships-mock-test-and-ai-chatbot-include-a-top-navigation-bar-with-the-sarthi-logo-on-the-left-and-a-profile-icon-on-the-top-right-that-opens-the-profile-section",
+      "title": "Build a Dashboard as the central home screen. After login, display a welcome message with the user's name and navigable cards/sections for: Career Quiz, Scholarships, Internships, Mock Test, and AI Chatbot. Include a top navigation bar with the Sarthi logo on the left and a profile icon on the top-right that opens the Profile section.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-career-quiz-module-present-a-series-of-aptitude-and-interest-based-mcq-questions-minimum-10-questions-after-the-student-submits-all-answers-analyze-responses-using-a-scoring-category-logic-on-the-backend-and-display-a-result-page-showing-recommended-career-stream-e-g-science-engineering-medical-commerce-arts-suggested-subjects-and-future-career-scope-description",
+      "title": "Implement a Career Quiz module. Present a series of aptitude and interest-based MCQ questions (minimum 10 questions). After the student submits all answers, analyze responses using a scoring/category logic on the backend and display a result page showing: recommended career stream (e.g., Science/Engineering, Medical, Commerce, Arts), suggested subjects, and future career scope description.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-scholarship-section-display-a-list-of-government-and-private-scholarship-schemes-each-scholarship-card-must-show-name-provider-government-private-eligibility-summary-and-an-apply-now-button-that-opens-the-official-scholarship-portal-in-a-new-tab-students-can-save-scholarships-to-their-collection",
+      "title": "Implement a Scholarship section. Display a list of government and private scholarship schemes. Each scholarship card must show: name, provider (government/private), eligibility summary, and an 'Apply Now' button that opens the official scholarship portal in a new tab. Students can save scholarships to their collection.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-an-internship-section-display-internships-categorized-by-domain-engineering-medical-commerce-and-arts-each-internship-card-must-show-title-organization-domain-category-brief-description-and-a-view-details-button-that-redirects-to-the-internship-platform-in-a-new-tab-students-can-save-internships-to-their-collection",
+      "title": "Implement an Internship section. Display internships categorized by domain: Engineering, Medical, Commerce, and Arts. Each internship card must show: title, organization, domain category, brief description, and a 'View Details' button that redirects to the internship platform in a new tab. Students can save internships to their collection.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-mock-test-module-allow-the-student-to-select-a-subject-e-g-mathematics-science-english-general-knowledge-reasoning-present-timed-mcq-questions-for-the-selected-subject-after-submission-display-the-score-correct-answers-and-a-pass-fail-or-performance-rating",
+      "title": "Implement a Mock Test module. Allow the student to select a subject (e.g., Mathematics, Science, English, General Knowledge, Reasoning). Present timed MCQ questions for the selected subject. After submission, display the score, correct answers, and a pass/fail or performance rating.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-an-ai-chatbot-section-using-the-hugging-face-inference-api-free-tier-the-chatbot-should-assist-students-with-career-doubts-educational-queries-and-personalized-suggestions-the-chat-interface-must-support-persistent-chat-history-per-user-stored-in-the-backend-allowing-students-to-continue-previous-conversations-display-previous-chat-sessions-in-a-sidebar-or-history-list",
+      "title": "Implement an AI Chatbot section using the Hugging Face Inference API (free tier). The chatbot should assist students with career doubts, educational queries, and personalized suggestions. The chat interface must support persistent chat history per user stored in the backend, allowing students to continue previous conversations. Display previous chat sessions in a sidebar or history list.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-profile-section-accessible-from-the-top-right-profile-icon-include-display-name-and-avatar-initial-edit-profile-form-name-date-of-birth-school-college-name-class-year-email-phone-excluded-saved-collections-tab-showing-saved-scholarships-internships-and-colleges-language-preference-selector-english-hindi-at-minimum-appearance-toggle-light-dark-mode-and-a-logout-button",
+      "title": "Implement a Profile section accessible from the top-right profile icon. Include: display name and avatar initial, edit profile form (name, date of birth, school/college name, class/year — email/phone excluded), saved collections tab showing saved scholarships, internships, and colleges, language preference selector (English/Hindi at minimum), appearance toggle (light/dark mode), and a logout button.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-apply-a-cohesive-visual-theme-across-the-entire-app-use-a-warm-motivational-academic-aesthetic-a-deep-teal-and-saffron-amber-color-palette-evoking-the-indian-educational-context-clean-card-based-layouts-bold-section-headings-with-subtle-gradients-and-smooth-transitions-the-design-should-feel-modern-trustworthy-and-student-friendly-on-both-desktop-and-mobile-screen-sizes",
+      "title": "Apply a cohesive visual theme across the entire app. Use a warm, motivational academic aesthetic: a deep teal and saffron/amber color palette evoking the Indian educational context, clean card-based layouts, bold section headings with subtle gradients, and smooth transitions. The design should feel modern, trustworthy, and student-friendly on both desktop and mobile screen sizes.",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Career quiz with aptitude/interest MCQs and result analysis suggesting stream, subjects, and future scope",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Scholarship section showing government and private schemes with eligibility details and direct portal links",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Internship section categorized by domain (engineering, medical, commerce, arts) with direct platform links",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Mock test module for different subjects with scoring and result display",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "AI chatbot (Hugging Face API) for career/education guidance with persistent chat history",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Profile section with edit profile (name, DOB, etc.), saved collections (colleges, scholarships, internships), language preference, appearance settings, and logout",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Internet Identity authentication (login/signup)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "Dashboard as central hub linking to all modules: quiz, scholarships, internships, mock test, chatbot",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-12",
+      "summary": "Store career quiz questions and a static dataset of scholarships and internships in the Motoko backend. Career quiz results per user must be persisted. Saved scholarships, internships, and colleges per user must be stored and retrievable.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Sarthi",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

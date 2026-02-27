@@ -1,0 +1,6 @@
+{
+  "frontend/src/pages/LandingPage.tsx": "Public landing page for Sarthi with hero section, feature cards, and Internet Identity login button. Fixed duplicate React import — now has a single combined `import React, { useEffect } from 'react'`.",
+  "frontend/src/pages/Chatbot.tsx": "AI chatbot page with scrollable message thread, typing indicator, suggested questions, date-grouped chat history, and send-on-Enter textarea input. Connects to backend `getChatHistory` and `sendMessageToChatbot` via React Query hooks.",
+  "frontend/src/pages/Profile.tsx": "User profile page with three tabs — Edit Profile (name, DOB, school, class/year), Saved Collections (scholarships and internships), and Settings (language selector, dark/light mode toggle, logout). Persists all changes to the backend via `saveCallerUserProfile`.",
+  "frontend/src/App.tsx": "Main app router configuration using TanStack Router with public landing route and authenticated layout routes for all feature pages. Removed unused `redirect` and `useInternetIdentity` imports."
+}

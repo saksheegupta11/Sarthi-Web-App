@@ -1,0 +1,202 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-implement-internet-identity-authentication-users-must-log-in-via-internet-identity-before-accessing-any-app-feature-after-login-the-authenticated-principal-is-used-to-associate-all-user-data-profile-quiz-results-saved-items-chat-history",
+      "featureTitle": "Implement Internet Identity authentication. Users must log in via Internet Identity before accessing any app feature. After login, the authenticated principal is used to associate all user data (profile, quiz results, saved items, chat history).",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/ProfileSetupModal.tsx",
+        "frontend/src/components/ProtectedRoute.tsx",
+        "frontend/src/pages/LandingPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "http-outcalls@3.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-build-a-dashboard-as-the-central-home-screen-after-login-display-a-welcome-message-with-the-user-s-name-and-navigable-cards-sections-for-career-quiz-scholarships-internships-mock-test-and-ai-chatbot-include-a-top-navigation-bar-with-the-sarthi-logo-on-the-left-and-a-profile-icon-on-the-top-right-that-opens-the-profile-section",
+      "featureTitle": "Build a Dashboard as the central home screen. After login, display a welcome message with the user's name and navigable cards/sections for: Career Quiz, Scholarships, Internships, Mock Test, and AI Chatbot. Include a top navigation bar with the Sarthi logo on the left and a profile icon on the top-right that opens the Profile section.",
+      "files": [
+        "frontend/src/components/Layout.tsx",
+        "frontend/src/components/TopNav.tsx",
+        "frontend/src/pages/Dashboard.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "http-outcalls@3.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-a-career-quiz-module-present-a-series-of-aptitude-and-interest-based-mcq-questions-minimum-10-questions-after-the-student-submits-all-answers-analyze-responses-using-a-scoring-category-logic-on-the-backend-and-display-a-result-page-showing-recommended-career-stream-e-g-science-engineering-medical-commerce-arts-suggested-subjects-and-future-career-scope-description",
+      "featureTitle": "Implement a Career Quiz module. Present a series of aptitude and interest-based MCQ questions (minimum 10 questions). After the student submits all answers, analyze responses using a scoring/category logic on the backend and display a result page showing: recommended career stream (e.g., Science/Engineering, Medical, Commerce, Arts), suggested subjects, and future career scope description.",
+      "files": [
+        "frontend/src/pages/CareerQuiz.tsx",
+        "frontend/src/pages/CareerQuizResult.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "http-outcalls@3.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-a-scholarship-section-display-a-list-of-government-and-private-scholarship-schemes-each-scholarship-card-must-show-name-provider-government-private-eligibility-summary-and-an-apply-now-button-that-opens-the-official-scholarship-portal-in-a-new-tab-students-can-save-scholarships-to-their-collection",
+      "featureTitle": "Implement a Scholarship section. Display a list of government and private scholarship schemes. Each scholarship card must show: name, provider (government/private), eligibility summary, and an 'Apply Now' button that opens the official scholarship portal in a new tab. Students can save scholarships to their collection.",
+      "files": [
+        "frontend/src/pages/Scholarships.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "http-outcalls@3.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-an-internship-section-display-internships-categorized-by-domain-engineering-medical-commerce-and-arts-each-internship-card-must-show-title-organization-domain-category-brief-description-and-a-view-details-button-that-redirects-to-the-internship-platform-in-a-new-tab-students-can-save-internships-to-their-collection",
+      "featureTitle": "Implement an Internship section. Display internships categorized by domain: Engineering, Medical, Commerce, and Arts. Each internship card must show: title, organization, domain category, brief description, and a 'View Details' button that redirects to the internship platform in a new tab. Students can save internships to their collection.",
+      "files": [
+        "frontend/src/pages/Internships.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "http-outcalls@3.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-a-mock-test-module-allow-the-student-to-select-a-subject-e-g-mathematics-science-english-general-knowledge-reasoning-present-timed-mcq-questions-for-the-selected-subject-after-submission-display-the-score-correct-answers-and-a-pass-fail-or-performance-rating",
+      "featureTitle": "Implement a Mock Test module. Allow the student to select a subject (e.g., Mathematics, Science, English, General Knowledge, Reasoning). Present timed MCQ questions for the selected subject. After submission, display the score, correct answers, and a pass/fail or performance rating.",
+      "files": [
+        "frontend/src/pages/MockTest.tsx",
+        "frontend/src/pages/MockTestResult.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "http-outcalls@3.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-7"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-an-ai-chatbot-section-using-the-hugging-face-inference-api-free-tier-the-chatbot-should-assist-students-with-career-doubts-educational-queries-and-personalized-suggestions-the-chat-interface-must-support-persistent-chat-history-per-user-stored-in-the-backend-allowing-students-to-continue-previous-conversations-display-previous-chat-sessions-in-a-sidebar-or-history-list",
+      "featureTitle": "Implement an AI Chatbot section using the Hugging Face Inference API (free tier). The chatbot should assist students with career doubts, educational queries, and personalized suggestions. The chat interface must support persistent chat history per user stored in the backend, allowing students to continue previous conversations. Display previous chat sessions in a sidebar or history list.",
+      "files": [
+        "frontend/src/pages/Chatbot.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "http-outcalls@3.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-8"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-a-profile-section-accessible-from-the-top-right-profile-icon-include-display-name-and-avatar-initial-edit-profile-form-name-date-of-birth-school-college-name-class-year-email-phone-excluded-saved-collections-tab-showing-saved-scholarships-internships-and-colleges-language-preference-selector-english-hindi-at-minimum-appearance-toggle-light-dark-mode-and-a-logout-button",
+      "featureTitle": "Implement a Profile section accessible from the top-right profile icon. Include: display name and avatar initial, edit profile form (name, date of birth, school/college name, class/year — email/phone excluded), saved collections tab showing saved scholarships, internships, and colleges, language preference selector (English/Hindi at minimum), appearance toggle (light/dark mode), and a logout button.",
+      "files": [
+        "frontend/src/pages/Profile.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "http-outcalls@3.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-9"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-apply-a-cohesive-visual-theme-across-the-entire-app-use-a-warm-motivational-academic-aesthetic-a-deep-teal-and-saffron-amber-color-palette-evoking-the-indian-educational-context-clean-card-based-layouts-bold-section-headings-with-subtle-gradients-and-smooth-transitions-the-design-should-feel-modern-trustworthy-and-student-friendly-on-both-desktop-and-mobile-screen-sizes",
+      "featureTitle": "Apply a cohesive visual theme across the entire app. Use a warm, motivational academic aesthetic: a deep teal and saffron/amber color palette evoking the Indian educational context, clean card-based layouts, bold section headings with subtle gradients, and smooth transitions. The design should feel modern, trustworthy, and student-friendly on both desktop and mobile screen sizes.",
+      "files": [
+        "frontend/src/index.css",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "http-outcalls@3.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-10"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

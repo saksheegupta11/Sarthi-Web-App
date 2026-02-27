@@ -1,0 +1,236 @@
+{
+  "kind": "build_request",
+  "title": "Sarthi – AI-Based Educational & Career Guidance Web App (Initial Build)",
+  "projectName": "Sarthi Guidance",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Implement Internet Identity authentication. Users must log in via Internet Identity before accessing any app feature. After login, the authenticated principal is used to associate all user data (profile, quiz results, saved items, chat history).",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "For login user has to enter either registered email address and an OTP will be send"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Unauthenticated users see only the login/landing page",
+        "Clicking 'Login with Internet Identity' opens the II flow",
+        "After successful authentication, user is redirected to the Dashboard",
+        "Logout clears the session and returns user to the landing page"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Build a Dashboard as the central home screen. After login, display a welcome message with the user's name and navigable cards/sections for: Career Quiz, Scholarships, Internships, Mock Test, and AI Chatbot. Include a top navigation bar with the Sarthi logo on the left and a profile icon on the top-right that opens the Profile section.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Dashboard / Home – Login ke baad student Dashboard par aata hai"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Dashboard displays five feature cards: Career Quiz, Scholarships, Internships, Mock Test, AI Chatbot",
+        "Each card navigates to the corresponding module",
+        "Profile icon in top-right corner opens the Profile section",
+        "User's display name shown on the dashboard"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Implement a Career Quiz module. Present a series of aptitude and interest-based MCQ questions (minimum 10 questions). After the student submits all answers, analyze responses using a scoring/category logic on the backend and display a result page showing: recommended career stream (e.g., Science/Engineering, Medical, Commerce, Arts), suggested subjects, and future career scope description.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "a student can answer some of the quizzes given on the basis of their answer a result will be generated which suggests stream, subjects, future scope"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Quiz presents at least 10 MCQ questions sequentially",
+        "Student can navigate between questions and change answers before submitting",
+        "On submission, backend returns a recommended stream, list of subjects, and future scope text",
+        "Result page clearly displays stream, subjects, and future scope",
+        "Result is saved to the user's profile/collection in the backend"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Store career quiz questions and a static dataset of scholarships and internships in the Motoko backend. Career quiz results per user must be persisted. Saved scholarships, internships, and colleges per user must be stored and retrievable.",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "your collections(saved college, scholarships, internships)"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Backend actor exposes functions to get quiz questions, submit quiz answers, and retrieve results by principal",
+        "Backend stores scholarship and internship records with title, description, eligibility, category, and external URL",
+        "Backend provides save/unsave functions for scholarships, internships, and colleges per user principal",
+        "Backend provides a function to retrieve a user's saved collections"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Implement a Scholarship section. Display a list of government and private scholarship schemes. Each scholarship card must show: name, provider (government/private), eligibility summary, and an 'Apply Now' button that opens the official scholarship portal in a new tab. Students can save scholarships to their collection.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "scholarship where the scholarship schemes will be shown and their link will be given to directly reach to that particular scheme portal"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Scholarship list displays at least 10 pre-seeded entries",
+        "Each card shows name, type (government/private), eligibility, and Apply Now link",
+        "Apply Now opens the external URL in a new tab",
+        "Save/bookmark icon on each card saves the scholarship to the user's collection",
+        "Saved state is visually indicated (filled bookmark icon)"
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Implement an Internship section. Display internships categorized by domain: Engineering, Medical, Commerce, and Arts. Each internship card must show: title, organization, domain category, brief description, and a 'View Details' button that redirects to the internship platform in a new tab. Students can save internships to their collection.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "internship section also where list of internships given according to the category like engineering, medical, etc. And their link to reach that particular portal"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Internship list is filterable by category: Engineering, Medical, Commerce, Arts",
+        "Each card shows title, organization, category, description, and View Details link",
+        "View Details opens the external URL in a new tab",
+        "Save/bookmark icon saves the internship to the user's collection",
+        "At least 8 pre-seeded internship entries across categories"
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Implement a Mock Test module. Allow the student to select a subject (e.g., Mathematics, Science, English, General Knowledge, Reasoning). Present timed MCQ questions for the selected subject. After submission, display the score, correct answers, and a pass/fail or performance rating.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "There will be mock test option also for different subjects and generate result"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Student can choose from at least 4 subjects before starting the test",
+        "Each test has at least 10 MCQ questions with a countdown timer",
+        "On submission or timer expiry, score and correct answers are displayed",
+        "Performance summary (e.g., Excellent / Good / Needs Improvement) is shown based on score percentage",
+        "Test results are stored per user in the backend"
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "text": "Implement an AI Chatbot section using the Hugging Face Inference API (free tier). The chatbot should assist students with career doubts, educational queries, and personalized suggestions. The chat interface must support persistent chat history per user stored in the backend, allowing students to continue previous conversations. Display previous chat sessions in a sidebar or history list.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "an AI chatbot which help student for further discussion or doubt clearance and also helps in education and suggestions. There will be chat history in chatbot section to continue previous chats"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Chat UI with an input field and scrollable message thread",
+        "Messages are sent to Hugging Face Inference API and the response is displayed in the chat",
+        "Chat messages (user + bot) are persisted in the backend per user principal",
+        "A sidebar or panel lists previous chat sessions; clicking one loads that session's history",
+        "Student can start a new chat session",
+        "Loading indicator shown while awaiting AI response"
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "text": "Implement a Profile section accessible from the top-right profile icon. Include: display name and avatar initial, edit profile form (name, date of birth, school/college name, class/year — email/phone excluded), saved collections tab showing saved scholarships, internships, and colleges, language preference selector (English/Hindi at minimum), appearance toggle (light/dark mode), and a logout button.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "edit profile(name, DOB, etc. Except email and phone number), your collections(saved college, scholarships, internships), language preference, appearance, logout"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Profile page shows user avatar (initial-based) and display name",
+        "Edit profile form allows updating: name, DOB, institution name, class/year",
+        "Email and phone number fields are absent from the edit form",
+        "Saved Collections tab lists saved scholarships, internships, and colleges with remove option",
+        "Language selector includes at least English and Hindi",
+        "Appearance toggle switches between light and dark mode and persists the preference",
+        "Logout button ends the Internet Identity session and redirects to the landing page",
+        "Profile data is stored in the backend per user principal"
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "text": "Apply a cohesive visual theme across the entire app. Use a warm, motivational academic aesthetic: a deep teal and saffron/amber color palette evoking the Indian educational context, clean card-based layouts, bold section headings with subtle gradients, and smooth transitions. The design should feel modern, trustworthy, and student-friendly on both desktop and mobile screen sizes.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Consistent color palette (deep teal + saffron/amber) applied across all screens",
+        "Responsive layout works on mobile (≥375px) and desktop (≥1024px)",
+        "Card components, buttons, and navigation follow the same visual language",
+        "Dark mode variant maintains the same palette with appropriate contrast",
+        "Typography is legible and consistent across all sections"
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not use React Native; the frontend must be a React + TypeScript web application",
+    "Do not use Node.js, Express, or MongoDB; all backend logic must be in a single Motoko actor",
+    "Do not use JWT or NodeMailer; authentication must use Internet Identity only",
+    "Do not integrate OpenAI API; use Hugging Face Inference API (free tier) for the chatbot",
+    "Profile edit form must NOT include email or phone number fields",
+    "All external scholarship and internship links must open in a new browser tab",
+    "Do not edit files under frontend/src/hooks/ or frontend/src/components/ui"
+  ],
+  "nonGoals": [
+    "Native mobile app (iOS/Android) via React Native",
+    "OTP-based email login or NodeMailer integration",
+    "Real-time notifications or push notifications",
+    "Payment or fee processing",
+    "Admin panel for content management",
+    "Live internship/scholarship data via paid APIs (pre-seeded static data used instead)",
+    "GPS or location-based features",
+    "Social login (Google, Facebook, GitHub)"
+  ],
+  "imageRequirements": {
+    "required": [
+      "Sarthi app logo — a stylized compass or open book merged with a graduation cap in teal and amber tones on a transparent background (sarthi-logo.dim_256x256.png)",
+      "Dashboard hero banner — abstract illustration of a student at a crossroads with signposts representing career paths, warm amber-teal gradient background (dashboard-hero.dim_1200x400.png)",
+      "Career quiz section illustration — flat-style illustration of a student thinking with lightbulb and career icons floating around (quiz-illustration.dim_600x400.png)",
+      "Scholarship section illustration — flat-style illustration of a graduation cap with coins and a document scroll in teal and amber (scholarship-illustration.dim_600x400.png)",
+      "Internship section illustration — flat-style illustration of a briefcase with domain category icons in teal and amber palette (internship-illustration.dim_600x400.png)",
+      "Chatbot avatar icon — friendly robot face in teal and amber circular badge style (chatbot-avatar.dim_128x128.png)"
+    ],
+    "edits": []
+  }
+}
